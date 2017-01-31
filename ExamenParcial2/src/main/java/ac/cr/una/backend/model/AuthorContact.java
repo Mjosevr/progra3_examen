@@ -5,17 +5,37 @@
  */
 package ac.cr.una.backend.model;
 
+import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 /**
  *
  * @author mauricio
  */
-public class AuthorContact {
+@Entity
+@Table(name = "AuthorContact", catalog = "progra3_exa2", uniqueConstraints = {
+    @UniqueConstraint(columnNames = "idAuthorContact")})
 
+public class AuthorContact implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "idAuthorContact", unique = true, nullable = false)
     private int idAuthorContact;
+    @Column(name = "idAuthor", unique = true, nullable = false)
+    @OneToOne
     private Author author;
+    @Column(name = "contact", unique = false, nullable = false)
     private String contact;
+    @Column(name = "type", unique = false, nullable = false)
     private String type;
 
     public AuthorContact() {
@@ -32,8 +52,12 @@ public class AuthorContact {
         return idAuthorContact;
     }
 
-    public Author getAuthor() {
-        return author;
+    /**
+     *
+     * @return
+     */
+    public int getAuthor() {
+        return author.getIdAuthor();
     }
 
     public String getContact() {

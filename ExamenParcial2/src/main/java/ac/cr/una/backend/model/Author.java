@@ -5,15 +5,31 @@
  */
 package ac.cr.una.backend.model;
 
+import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 /**
  *
  * @author mauricio
  */
-public class Author {
+@Entity
+@Table(name = "Author", catalog = "progra3_exa2", uniqueConstraints = {
+    @UniqueConstraint(columnNames = "idAuthor")})
 
+public class Author implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "idAuthor", unique = true, nullable = false)
     private int idAuthor;
+    @Column(name = "name", unique = true, nullable = false, length = 10)
     private String name;
 
     public Author() {

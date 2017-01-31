@@ -5,20 +5,45 @@
  */
 package ac.cr.una.backend.model;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.UniqueConstraint;
 
 /**
  *
  * @author mauricio
  */
-public class Book {
+@Entity
+@Table(name = "Book", catalog = "progra3_exa2", uniqueConstraints = {
+    @UniqueConstraint(columnNames = "idBook")})
 
+public class Book implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "idBook", unique = true, nullable = false)
     private int idBook;
+    @Column(name = "id_Author", unique = true, nullable = false)    
+    @OneToOne
     private Author author;
+    @OneToOne
     private BookType type;
+    @Column(name = "name", unique = false, nullable = false)
     private String name;
+    @Column(name = "dataRelease", unique = true, nullable = false, length = 10)
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Calendar dataRelease;
+    @Column(name = "price", unique = false, nullable = false)
     private float price;
 
     public Book() {
@@ -37,8 +62,8 @@ public class Book {
         return idBook;
     }
 
-    public Author getAuthor() {
-        return author;
+    public int getAuthor() {
+        return author.getIdAuthor();
     }
 
     public BookType getType() {
