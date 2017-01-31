@@ -50,3 +50,4 @@ public class AuthorContactDAOimpl implements AuthorContactDAO {
         return isDeleted;
     }
 }
+

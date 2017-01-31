@@ -16,19 +16,23 @@
  * 
  * Universidad Nacional de Costa Rica, Prof: Maikol Guzman Alan.
  */
-package ac.cr.una.backend.dao;
+package ac.cr.una.backend.service;
 
-import ac.cr.una.backend.model.BookType;
+import ac.cr.una.backend.model.Book;
+import java.util.List;
 
 /**
  *
  * @author mguzmana
  */
-public interface BookTypeDAO {
+public interface BookService {
 
-    public BookType save(BookType bookType);
+    public float totalPriceAll();
 
-    public BookType findByName(String name);
+    public List<Book> findAll();
+
+    public Book save(Book book);
 
     public boolean deleteAll();
+
 }

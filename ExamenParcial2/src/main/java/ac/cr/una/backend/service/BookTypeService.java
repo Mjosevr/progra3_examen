@@ -16,7 +16,7 @@
  * 
  * Universidad Nacional de Costa Rica, Prof: Maikol Guzman Alan.
  */
-package ac.cr.una.backend.dao;
+package ac.cr.una.backend.service;
 
 import ac.cr.una.backend.model.BookType;
 
@@ -24,11 +24,12 @@ import ac.cr.una.backend.model.BookType;
  *
  * @author mguzmana
  */
-public interface BookTypeDAO {
-
-    public BookType save(BookType bookType);
+public interface BookTypeService {
 
     public BookType findByName(String name);
 
+    public BookType save(BookType bookType);
+
     public boolean deleteAll();
+
 }

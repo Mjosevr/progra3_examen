@@ -8,6 +8,7 @@ package ac.cr.una.backend.dao;
 import ac.cr.una.backend.model.BookType;
 import java.util.ArrayList;
 import java.util.List;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 /**
@@ -28,12 +29,14 @@ public class BookTypeDAOimpl implements BookTypeDAO {
     }
 
     @Override
-    public List<BookType> findAll() {
-        List<BookType> bookTypeList = new ArrayList<>();
-
-        bookTypeList = session.createCriteria(BookType.class).list();
-
-        return bookTypeList;
+    public BookType findByName(String name) {
+        BookType bookType = null;
+        Query query = session.createQuery("from Author where name = :name");
+        query.setParameter("name", name);
+        if (query.list().size() > 0) {
+            bookType = (BookType) query.list().get(0);
+        }
+        return bookType;
     }
 
     @Override
