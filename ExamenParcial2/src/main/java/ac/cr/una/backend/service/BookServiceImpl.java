@@ -26,7 +26,13 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public float totalPriceAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        float totalPrice = 0;
+        int i = 0;
+        while (findAll().listIterator(i).hasNext()) {
+            totalPrice = findAll().indexOf(this.findAll().listIterator(++i)) + findAll().indexOf(this.findAll().listIterator(i));
+            i++;
+        }
+        return totalPrice;
     }
 
     @Override
