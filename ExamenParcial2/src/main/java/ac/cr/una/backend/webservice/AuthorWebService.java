@@ -40,6 +40,10 @@ public class AuthorWebService {
     public AuthorWebService() {
     }
 
+    /**
+     *
+     * @return AuthorContactList
+     */
     @GET
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
@@ -53,6 +57,11 @@ public class AuthorWebService {
         return AuthorContactList;
     }
 
+    /**
+     *
+     * @param nombre
+     * @return author
+     */
     @GET
     @Path("/{nombre}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -66,6 +75,10 @@ public class AuthorWebService {
         return author;
     }
 
+    /**
+     *
+     * @return result
+     */
     @DELETE
     @Path("/")
     public boolean deleteAll() {
@@ -78,6 +91,11 @@ public class AuthorWebService {
         return result;
     }
 
+    /**
+     *
+     * @param authorContact
+     * @return
+     */
     @POST
     @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)

@@ -41,6 +41,11 @@ public class BookTypeWebService {
     public BookTypeWebService() {
     }
 
+    /**
+     *
+     * @param nombre
+     * @return booktype
+     */
     @GET
     @Path("/{nombre}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -54,6 +59,10 @@ public class BookTypeWebService {
         return booktype;
     }
 
+    /**
+     *
+     * @return result
+     */
     @DELETE
     @Path("/")
     public boolean deleteAll() {
@@ -66,6 +75,11 @@ public class BookTypeWebService {
         return result;
     }
 
+    /**
+     *
+     * @param bookType
+     * @return
+     */
     @POST
     @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)

@@ -39,6 +39,10 @@ public class BookWebService {
     public BookWebService() {
     }
 
+    /**
+     *
+     * @return result
+     */
     @DELETE
     @Path("/")
     public boolean deleteAll() {
@@ -51,6 +55,11 @@ public class BookWebService {
         return result;
     }
 
+    /**
+     *
+     * @param book
+     * @return
+     */
     @POST
     @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -65,6 +74,10 @@ public class BookWebService {
         return book;
     }
 
+    /**
+     *
+     * @return bookList
+     */
     @GET
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
@@ -78,6 +91,10 @@ public class BookWebService {
         return bookList;
     }
 
+    /**
+     *
+     * @return bookService.totalPriceAll()
+     */
     @GET
     @Path("/{price}")
     @Produces(MediaType.APPLICATION_JSON)
